@@ -29,10 +29,10 @@
 (define (choose-two-points points)
   (define index-1 (exact-floor (random (length points))))
   (define index-2 (exact-floor (random (length points))))
-  (when (= index-1 index-2)
-    (choose-two-points points))
-  (values (list-ref points index-1)
-          (list-ref points index-2)))
+  (if (= index-1 index-2)
+    (choose-two-points points)
+    (values (list-ref points index-1)
+            (list-ref points index-2))))
 
 (define fixed-points   #f) ; all the fixed points
 (define points-to-draw #f) ; all the points that should be drawn
